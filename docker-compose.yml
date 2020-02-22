@@ -1,19 +1,15 @@
 version: "3.7"
 
-networks:
-  portainer_network:
-    name: portainer_network
-
 volumes:
   portainer_data:
     name: portainer_data
 
 services:
-  app:
+  portainer:
     build:
       context: .
       dockerfile: portainer/Dockerfile
-    container_name: ${COMPOSE_PROJECT_NAME}
+    container_name: portainer
     restart: unless-stopped
     ports:
       - "${TUNNEL_PORT}:8000"
@@ -23,5 +19,3 @@ services:
       - portainer_data:/data
     environment:
       TZ: Asia/Jakarta
-    networks:
-      - portainer_network
