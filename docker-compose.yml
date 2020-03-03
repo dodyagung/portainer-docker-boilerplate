@@ -19,3 +19,4 @@ services:
       - portainer_data:/data
     environment:
       TZ: Asia/Jakarta
+    network_mode: bridge
